@@ -10,8 +10,20 @@
 //    aPISettings, err := UnmarshalAPISettings(bytes)
 //    bytes, err = aPISettings.Marshal()
 //
+//    builderFn1, err := UnmarshalBuilderFn1(bytes)
+//    bytes, err = builderFn1.Marshal()
+//
+//    builderFn2, err := UnmarshalBuilderFn2(bytes)
+//    bytes, err = builderFn2.Marshal()
+//
+//    builderVariable, err := UnmarshalBuilderVariable(bytes)
+//    bytes, err = builderVariable.Marshal()
+//
 //    categoryPageView, err := UnmarshalCategoryPageView(bytes)
 //    bytes, err = categoryPageView.Marshal()
+//
+//    changeItemStockState, err := UnmarshalChangeItemStockState(bytes)
+//    bytes, err = changeItemStockState.Marshal()
 //
 //    checkoutStart, err := UnmarshalCheckoutStart(bytes)
 //    bytes, err = checkoutStart.Marshal()
@@ -19,8 +31,8 @@
 //    common, err := UnmarshalCommon(bytes)
 //    bytes, err = common.Marshal()
 //
-//    detailProductView, err := UnmarshalDetailProductView(bytes)
-//    bytes, err = detailProductView.Marshal()
+//    detailItemView, err := UnmarshalDetailItemView(bytes)
+//    bytes, err = detailItemView.Marshal()
 //
 //    homePageView, err := UnmarshalHomePageView(bytes)
 //    bytes, err = homePageView.Marshal()
@@ -28,8 +40,29 @@
 //    imageInteraction, err := UnmarshalImageInteraction(bytes)
 //    bytes, err = imageInteraction.Marshal()
 //
+//    itemAttributesSelection, err := UnmarshalItemAttributesSelection(bytes)
+//    bytes, err = itemAttributesSelection.Marshal()
+//
+//    itemRemove, err := UnmarshalItemRemove(bytes)
+//    bytes, err = itemRemove.Marshal()
+//
+//    itemsImpression, err := UnmarshalItemsImpression(bytes)
+//    bytes, err = itemsImpression.Marshal()
+//
+//    itemsView, err := UnmarshalItemsView(bytes)
+//    bytes, err = itemsView.Marshal()
+//
+//    itemUpsert, err := UnmarshalItemUpsert(bytes)
+//    bytes, err = itemUpsert.Marshal()
+//
 //    listView, err := UnmarshalListView(bytes)
 //    bytes, err = listView.Marshal()
+//
+//    offlineRecommendationsRemove, err := UnmarshalOfflineRecommendationsRemove(bytes)
+//    bytes, err = offlineRecommendationsRemove.Marshal()
+//
+//    offlineRecommendationsUpsert, err := UnmarshalOfflineRecommendationsUpsert(bytes)
+//    bytes, err = offlineRecommendationsUpsert.Marshal()
 //
 //    otherInteraction, err := UnmarshalOtherInteraction(bytes)
 //    bytes, err = otherInteraction.Marshal()
@@ -37,11 +70,23 @@
 //    pageVisit, err := UnmarshalPageVisit(bytes)
 //    bytes, err = pageVisit.Marshal()
 //
+//    placementRemove, err := UnmarshalPlacementRemove(bytes)
+//    bytes, err = placementRemove.Marshal()
+//
+//    placementStatisticsJSONReady, err := UnmarshalPlacementStatisticsJSONReady(bytes)
+//    bytes, err = placementStatisticsJSONReady.Marshal()
+//
+//    placementUpsert, err := UnmarshalPlacementUpsert(bytes)
+//    bytes, err = placementUpsert.Marshal()
+//
 //    purchaseComplete, err := UnmarshalPurchaseComplete(bytes)
 //    bytes, err = purchaseComplete.Marshal()
 //
-//    rateProduct, err := UnmarshalRateProduct(bytes)
-//    bytes, err = rateProduct.Marshal()
+//    rateItem, err := UnmarshalRateItem(bytes)
+//    bytes, err = rateItem.Marshal()
+//
+//    recoACK, err := UnmarshalRecoACK(bytes)
+//    bytes, err = recoACK.Marshal()
 //
 //    recoRequest, err := UnmarshalRecoRequest(bytes)
 //    bytes, err = recoRequest.Marshal()
@@ -55,20 +100,29 @@
 //    removeFromList, err := UnmarshalRemoveFromList(bytes)
 //    bytes, err = removeFromList.Marshal()
 //
-//    removeItem, err := UnmarshalRemoveItem(bytes)
-//    bytes, err = removeItem.Marshal()
+//    searchItems, err := UnmarshalSearchItems(bytes)
+//    bytes, err = searchItems.Marshal()
 //
 //    cartPageView, err := UnmarshalCartPageView(bytes)
 //    bytes, err = cartPageView.Marshal()
 //
+//    smartSearchRequest, err := UnmarshalSmartSearchRequest(bytes)
+//    bytes, err = smartSearchRequest.Marshal()
+//
+//    smartSearchShow, err := UnmarshalSmartSearchShow(bytes)
+//    bytes, err = smartSearchShow.Marshal()
+//
 //    sortItems, err := UnmarshalSortItems(bytes)
 //    bytes, err = sortItems.Marshal()
+//
+//    strategyParametersTypes, err := UnmarshalStrategyParametersTypes(bytes)
+//    bytes, err = strategyParametersTypes.Marshal()
 //
 //    unknownEvent, err := UnmarshalUnknownEvent(bytes)
 //    bytes, err = unknownEvent.Marshal()
 //
-//    upsertItem, err := UnmarshalUpsertItem(bytes)
-//    bytes, err = upsertItem.Marshal()
+//    videoInteraction, err := UnmarshalVideoInteraction(bytes)
+//    bytes, err = videoInteraction.Marshal()
 
 package main
 
@@ -106,6 +160,36 @@ func (r *APISettings) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
+func UnmarshalBuilderFn1(data []byte) (BuilderFn1, error) {
+	var r BuilderFn1
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *BuilderFn1) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalBuilderFn2(data []byte) (BuilderFn2, error) {
+	var r BuilderFn2
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *BuilderFn2) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalBuilderVariable(data []byte) (BuilderVariable, error) {
+	var r BuilderVariable
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *BuilderVariable) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
 func UnmarshalCategoryPageView(data []byte) (CategoryPageView, error) {
 	var r CategoryPageView
 	err := json.Unmarshal(data, &r)
@@ -113,6 +197,16 @@ func UnmarshalCategoryPageView(data []byte) (CategoryPageView, error) {
 }
 
 func (r *CategoryPageView) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalChangeItemStockState(data []byte) (ChangeItemStockState, error) {
+	var r ChangeItemStockState
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *ChangeItemStockState) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
@@ -138,13 +232,13 @@ func (r *Common) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
-func UnmarshalDetailProductView(data []byte) (DetailProductView, error) {
-	var r DetailProductView
+func UnmarshalDetailItemView(data []byte) (DetailItemView, error) {
+	var r DetailItemView
 	err := json.Unmarshal(data, &r)
 	return r, err
 }
 
-func (r *DetailProductView) Marshal() ([]byte, error) {
+func (r *DetailItemView) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
@@ -168,6 +262,56 @@ func (r *ImageInteraction) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
+func UnmarshalItemAttributesSelection(data []byte) (ItemAttributesSelection, error) {
+	var r ItemAttributesSelection
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *ItemAttributesSelection) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalItemRemove(data []byte) (ItemRemove, error) {
+	var r ItemRemove
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *ItemRemove) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalItemsImpression(data []byte) (ItemsImpression, error) {
+	var r ItemsImpression
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *ItemsImpression) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalItemsView(data []byte) (ItemsView, error) {
+	var r ItemsView
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *ItemsView) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalItemUpsert(data []byte) (ItemUpsert, error) {
+	var r ItemUpsert
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *ItemUpsert) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
 func UnmarshalListView(data []byte) (ListView, error) {
 	var r ListView
 	err := json.Unmarshal(data, &r)
@@ -175,6 +319,26 @@ func UnmarshalListView(data []byte) (ListView, error) {
 }
 
 func (r *ListView) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalOfflineRecommendationsRemove(data []byte) (OfflineRecommendationsRemove, error) {
+	var r OfflineRecommendationsRemove
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *OfflineRecommendationsRemove) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalOfflineRecommendationsUpsert(data []byte) (OfflineRecommendationsUpsert, error) {
+	var r OfflineRecommendationsUpsert
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *OfflineRecommendationsUpsert) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
@@ -198,6 +362,36 @@ func (r *PageVisit) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
+func UnmarshalPlacementRemove(data []byte) (PlacementRemove, error) {
+	var r PlacementRemove
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *PlacementRemove) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalPlacementStatisticsJSONReady(data []byte) (PlacementStatisticsJSONReady, error) {
+	var r PlacementStatisticsJSONReady
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *PlacementStatisticsJSONReady) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalPlacementUpsert(data []byte) (PlacementUpsert, error) {
+	var r PlacementUpsert
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *PlacementUpsert) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
 func UnmarshalPurchaseComplete(data []byte) (PurchaseComplete, error) {
 	var r PurchaseComplete
 	err := json.Unmarshal(data, &r)
@@ -208,13 +402,23 @@ func (r *PurchaseComplete) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
-func UnmarshalRateProduct(data []byte) (RateProduct, error) {
-	var r RateProduct
+func UnmarshalRateItem(data []byte) (RateItem, error) {
+	var r RateItem
 	err := json.Unmarshal(data, &r)
 	return r, err
 }
 
-func (r *RateProduct) Marshal() ([]byte, error) {
+func (r *RateItem) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalRecoACK(data []byte) (RecoACK, error) {
+	var r RecoACK
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *RecoACK) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
@@ -258,13 +462,13 @@ func (r *RemoveFromList) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
-func UnmarshalRemoveItem(data []byte) (RemoveItem, error) {
-	var r RemoveItem
+func UnmarshalSearchItems(data []byte) (SearchItems, error) {
+	var r SearchItems
 	err := json.Unmarshal(data, &r)
 	return r, err
 }
 
-func (r *RemoveItem) Marshal() ([]byte, error) {
+func (r *SearchItems) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
@@ -278,6 +482,26 @@ func (r *CartPageView) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
+func UnmarshalSmartSearchRequest(data []byte) (SmartSearchRequest, error) {
+	var r SmartSearchRequest
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *SmartSearchRequest) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalSmartSearchShow(data []byte) (SmartSearchShow, error) {
+	var r SmartSearchShow
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *SmartSearchShow) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
 func UnmarshalSortItems(data []byte) (SortItems, error) {
 	var r SortItems
 	err := json.Unmarshal(data, &r)
@@ -285,6 +509,16 @@ func UnmarshalSortItems(data []byte) (SortItems, error) {
 }
 
 func (r *SortItems) Marshal() ([]byte, error) {
+	return json.Marshal(r)
+}
+
+func UnmarshalStrategyParametersTypes(data []byte) (StrategyParametersTypes, error) {
+	var r StrategyParametersTypes
+	err := json.Unmarshal(data, &r)
+	return r, err
+}
+
+func (r *StrategyParametersTypes) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
@@ -298,24 +532,23 @@ func (r *UnknownEvent) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
-func UnmarshalUpsertItem(data []byte) (UpsertItem, error) {
-	var r UpsertItem
+func UnmarshalVideoInteraction(data []byte) (VideoInteraction, error) {
+	var r VideoInteraction
 	err := json.Unmarshal(data, &r)
 	return r, err
 }
 
-func (r *UpsertItem) Marshal() ([]byte, error) {
+func (r *VideoInteraction) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
 type AddToCart struct {
-	CartID      *string       `json:"cart_id"`     
-	EventDetail *EventDetail  `json:"event_detail"`
-	EventTime   int64         `json:"event_time"`  
-	EventType   EventType     `json:"event_type"`  
-	Items       []ItemDetails `json:"items"`       
-	RecID       *string       `json:"rec_id"`      
-	UserInfo    UserInfo      `json:"user_info"`   
+	CartID      *string      `json:"cart_id"`     
+	EventDetail *EventDetail `json:"event_detail"`
+	EventTime   *int64       `json:"event_time"`  
+	EventType   EventType    `json:"event_type"`  
+	Item        ItemDetails  `json:"item"`        
+	UserInfo    UserInfo     `json:"user_info"`   
 }
 
 type EventDetail struct {
@@ -326,15 +559,92 @@ type EventDetail struct {
 }
 
 type ItemDetails struct {
+	Attributes *Attributes `json:"attributes"`
+	ItemID     string      `json:"item_id"`   
+	ItemType   ItemType    `json:"item_type"` 
+}
+
+// This attribute structure is inspired by ECS dense components also know as table-based
+// component list.
+type Attributes struct {
+	Article     *Article           `json:"article"`    
+	Categories  *Categories        `json:"categories"` 
+	Costs       *Costs             `json:"costs"`      
+	Description *Description       `json:"description"`
+	Ecommerce   *ItemEcommerceSpec `json:"ecommerce"`  
+	Images      *Images            `json:"images"`     
+	Price       *ExactPrice        `json:"price"`      
+	Stock       *Stock             `json:"stock"`      
+	Tags        *Tags              `json:"tags"`       
+	URL         ItemURL            `json:"url"`        
+	Video       *Video             `json:"video"`      
+}
+
+type Article struct {
+	Author         string `json:"author"`         
+	Snippet        string `json:"snippet"`        
+	TimestampAdded int64  `json:"timestamp_added"`
+}
+
+type Categories struct {
+	Categories [][]TextContent `json:"categories"`
+}
+
+type Costs struct {
+	Costs map[string]float64 `json:"costs"`
+}
+
+type Description struct {
+	Content      *ContentUnion `json:"content"`      
+	LanguageCode *string       `json:"language_code"`
+	Title        *TextContent  `json:"title"`        
+}
+
+type ItemEcommerceSpec struct {
+	ItemCode    *string `json:"item_code"`    
+	ItemGroupID *string `json:"item_group_id"`
+}
+
+type Images struct {
+	Images []Image `json:"images"`
+}
+
+type Image struct {
+	Height string `json:"height"`
+	URI    string `json:"uri"`   
+	Width  string `json:"width"` 
+}
+
+type ExactPrice struct {
 	CurrencyCode  *Currency `json:"currency_code"` 
-	DisplayPrice  *float64  `json:"display_price"` 
-	ItemID        string    `json:"item_id"`       
-	OriginalPrice *float64  `json:"original_price"`
-	Quantity      *int64    `json:"quantity"`      
+	DisplayPrice  float64   `json:"display_price"` 
+	OriginalPrice float64   `json:"original_price"`
+}
+
+type Stock struct {
+	AvailableQuantity *int64         `json:"available_quantity"`
+	Quantity          *int64         `json:"quantity"`          
+	StockState        StockStateEnum `json:"stock_state"`       
+}
+
+type Tags struct {
+	Tags []string `json:"tags"`
+}
+
+type ItemURL struct {
+	CanonicalURI           string  `json:"canonical_uri"`            
+	CanonicalURIWithParams *string `json:"canonical_uri_with_params"`
+	URLParams              *string `json:"url_params"`               
+}
+
+type Video struct {
+	DurationSecs int64   `json:"duration_secs"`
+	URI          *string `json:"uri"`          
 }
 
 type UserInfo struct {
 	AdditionalInfo *UserAdditionalInfo `json:"additional_info"`
+	PrivacySetting *PrivacySetting     `json:"privacy_setting"`
 	SessionID      *string             `json:"session_id"`     
 	UserID         *string             `json:"user_id"`        
 	VisitorID      string              `json:"visitor_id"`     
@@ -350,12 +660,12 @@ type UserAdditionalInfo struct {
 }
 
 type AddToList struct {
-	EventDetail *EventDetail  `json:"event_detail"`
-	EventTime   int64         `json:"event_time"`  
-	EventType   EventType     `json:"event_type"`  
-	Items       []ItemDetails `json:"items"`       
-	ListID      string        `json:"list_id"`     
-	UserInfo    UserInfo      `json:"user_info"`   
+	EventDetail *EventDetail `json:"event_detail"`
+	EventTime   *int64       `json:"event_time"`  
+	EventType   EventType    `json:"event_type"`  
+	Item        ItemDetails  `json:"item"`        
+	ListID      string       `json:"list_id"`     
+	UserInfo    UserInfo     `json:"user_info"`   
 }
 
 type APISettings struct {
@@ -364,7 +674,7 @@ type APISettings struct {
 
 type CategoryPageView struct {
 	EventDetail    *EventDetail  `json:"event_detail"`   
-	EventTime      int64         `json:"event_time"`     
+	EventTime      *int64        `json:"event_time"`     
 	EventType      EventType     `json:"event_type"`     
 	Items          []ItemDetails `json:"items"`          
 	OnScreen       bool          `json:"on_screen"`      
@@ -372,10 +682,24 @@ type CategoryPageView struct {
 	UserInfo       UserInfo      `json:"user_info"`      
 }
 
+type ChangeItemStockState struct {
+	EventDetail *EventDetail   `json:"event_detail"`
+	EventTime   *int64         `json:"event_time"`  
+	EventType   EventType      `json:"event_type"`  
+	Item        Item           `json:"item"`        
+	StockState  StockStateEnum `json:"stock_state"` 
+	UserInfo    UserInfo       `json:"user_info"`   
+}
+
+type Item struct {
+	ItemID   string   `json:"item_id"`  
+	ItemType ItemType `json:"item_type"`
+}
+
 type CheckoutStart struct {
 	CartID              *string             `json:"cart_id"`             
 	EventDetail         *EventDetail        `json:"event_detail"`        
-	EventTime           int64               `json:"event_time"`          
+	EventTime           *int64              `json:"event_time"`          
 	EventType           EventType           `json:"event_type"`          
 	Items               []ItemDetails       `json:"items"`               
 	PurchaseTransaction PurchaseTransaction `json:"purchase_transaction"`
@@ -390,52 +714,128 @@ type PurchaseTransaction struct {
 	Taxes        *Taxes   `json:"taxes"`        
 }
 
-type Costs struct {
-	Cost          *float64 `json:"cost"`         
-	Manufacturing *float64 `json:"manufacturing"`
-}
-
 type Taxes struct {
 	Local *float64 `json:"local"`
 	State *float64 `json:"state"`
 }
 
-type DetailProductView struct {
-	EventDetail *EventDetail `json:"event_detail"`
-	EventTime   int64        `json:"event_time"`  
-	EventType   EventType    `json:"event_type"`  
-	Item        ItemDetails  `json:"item"`        
-	RecID       *string      `json:"rec_id"`      
-	UserInfo    UserInfo     `json:"user_info"`   
+type DetailItemView struct {
+	EventDetail    *EventDetail              `json:"event_detail"`   
+	EventTime      *int64                    `json:"event_time"`     
+	EventType      EventType                 `json:"event_type"`     
+	Item           ItemDetails               `json:"item"`           
+	RecID          *string                   `json:"rec_id"`         
+	UserInfo       UserInfo                  `json:"user_info"`      
+	ViewAttributes *DetailItemViewAttributes `json:"view_attributes"`
+}
+
+type DetailItemViewAttributes struct {
+	Completed    *bool  `json:"completed"`     // Completed can mean for - video - whether someone watched the whole video - article -; whether someone read the whole article
+	ViewTimeSecs *int64 `json:"view_time_secs"`// This attribute can be used for different item types. For - Video - means watch time -; Article - reading time - Ecommerce - time spend on viewing the product
 }
 
 type HomePageView struct {
 	EventDetail *EventDetail `json:"event_detail"`
-	EventTime   int64        `json:"event_time"`  
+	EventTime   *int64       `json:"event_time"`  
 	EventType   EventType    `json:"event_type"`  
 	UserInfo    UserInfo     `json:"user_info"`   
 }
 
 type ImageInteraction struct {
 	EventDetail *EventDetail `json:"event_detail"`
-	EventTime   int64        `json:"event_time"`  
+	EventTime   *int64       `json:"event_time"`  
 	EventType   EventType    `json:"event_type"`  
 	Item        ItemDetails  `json:"item"`        
 	UserInfo    UserInfo     `json:"user_info"`   
 }
 
+type ItemAttributesSelectionClass struct {
+	SelectedAttributes []ItemAttributesFieldNames `json:"SelectedAttributes"`
+}
+
+type ItemAttributesFieldNames struct {
+	URL           *ItemURLFieldName           `json:"Url,omitempty"`          
+	Price         *ExactPriceFieldName        `json:"Price,omitempty"`        
+	Description   *DescriptionFieldName       `json:"Description,omitempty"`  
+	Categories    *CategoriesFieldName        `json:"Categories,omitempty"`   
+	Images        *ImagesFieldName            `json:"Images,omitempty"`       
+	Video         *VideoFieldName             `json:"Video,omitempty"`        
+	Tags          *TagsFieldName              `json:"Tags,omitempty"`         
+	Article       *ArticleFieldName           `json:"Article,omitempty"`      
+	EcommerceSpec *ItemEcommerceSpecFieldName `json:"EcommerceSpec,omitempty"`
+	Stock         *StockFieldName             `json:"Stock,omitempty"`        
+	Costs         *CostsFieldName             `json:"Costs,omitempty"`        
+}
+
+type ItemRemove struct {
+	EventDetail *EventDetail `json:"event_detail"`
+	EventTime   *int64       `json:"event_time"`  
+	EventType   EventType    `json:"event_type"`  
+	Item        Item         `json:"item"`        
+	UserInfo    UserInfo     `json:"user_info"`   
+}
+
+type ItemsImpression struct {
+	EventDetail    *EventDetail  `json:"event_detail"`   
+	EventTime      *int64        `json:"event_time"`     
+	EventType      EventType     `json:"event_type"`     
+	Items          []ItemDetails `json:"items"`          
+	OnScreen       bool          `json:"on_screen"`      
+	PageCategories []string      `json:"page_categories"`
+	UserInfo       UserInfo      `json:"user_info"`      
+}
+
+type ItemsView struct {
+	EventDetail    *EventDetail  `json:"event_detail"`   
+	EventTime      *int64        `json:"event_time"`     
+	EventType      EventType     `json:"event_type"`     
+	Items          []ItemDetails `json:"items"`          
+	OnScreen       bool          `json:"on_screen"`      
+	PageCategories []string      `json:"page_categories"`
+	UserInfo       UserInfo      `json:"user_info"`      
+}
+
+type ItemUpsert struct {
+	EventDetail *EventDetail `json:"event_detail"`
+	EventTime   *int64       `json:"event_time"`  
+	EventType   EventType    `json:"event_type"`  
+	ItemDetails ItemDetails  `json:"item_details"`
+	UserInfo    UserInfo     `json:"user_info"`   
+}
+
 type ListView struct {
 	EventDetail *EventDetail  `json:"event_detail"`
-	EventTime   int64         `json:"event_time"`  
+	EventTime   *int64        `json:"event_time"`  
 	EventType   EventType     `json:"event_type"`  
 	Items       []ItemDetails `json:"items"`       
 	ListID      string        `json:"list_id"`     
 	UserInfo    UserInfo      `json:"user_info"`   
 }
 
+type OfflineRecommendationsRemove struct {
+	EventDetail *EventDetail                `json:"event_detail"`
+	EventTime   *int64                      `json:"event_time"`  
+	EventType   EventType                   `json:"event_type"`  
+	Name        *OfflineRecommendationsType `json:"name"`        
+	UserInfo    UserInfo                    `json:"user_info"`   
+}
+
+type OfflineRecommendationsTypeClass struct {
+	OtherSimilarity string `json:"OtherSimilarity"`
+}
+
+type OfflineRecommendationsUpsert struct {
+	EventDetail *EventDetail                `json:"event_detail"`
+	EventTime   *int64                      `json:"event_time"`  
+	EventType   EventType                   `json:"event_type"`  
+	Matrix      map[string]map[string]int64 `json:"matrix"`      
+	Name        *OfflineRecommendationsType `json:"name"`        
+	UserInfo    UserInfo                    `json:"user_info"`   
+}
+
 type OtherInteraction struct {
 	EventDetail     *EventDetail `json:"event_detail"`    
-	EventTime       int64        `json:"event_time"`      
+	EventTime       *int64       `json:"event_time"`      
 	EventType       EventType    `json:"event_type"`      
 	InteractionName string       `json:"interaction_name"`
 	Item            ItemDetails  `json:"item"`            
@@ -444,168 +844,273 @@ type OtherInteraction struct {
 
 type PageVisit struct {
 	EventDetail *EventDetail `json:"event_detail"`
-	EventTime   int64        `json:"event_time"`  
+	EventTime   *int64       `json:"event_time"`  
 	EventType   EventType    `json:"event_type"`  
 	UserInfo    UserInfo     `json:"user_info"`   
+}
+
+type PlacementRemove struct {
+	EventDetail *EventDetail `json:"event_detail"`
+	EventTime   *int64       `json:"event_time"`  
+	EventType   EventType    `json:"event_type"`  
+	Name        string       `json:"name"`        
+	UserInfo    UserInfo     `json:"user_info"`   
+}
+
+// Json safe version of PlacementStatistics, unfortunately serde_with doesn't work because
+// of conflicts with JsonSchema
+type PlacementStatisticsJSONReady struct {
+	LoadingTimesMicroseconds map[string]LIFOVecForUint128              `json:"loading_times_microseconds"`
+	PlacementsStatistics     map[string][][]PlacementsStatisticElement `json:"placements_statistics"`     
+}
+
+type LIFOVecForUint128 struct {
+	Base     []int64 `json:"base"`    
+	Capacity int64   `json:"capacity"`
+}
+
+// Pre-defined strategies
+//
+// Build your custom strategies
+//
+// Similar description, image or other defined by you
+type SuccessTriesClass struct {
+	Generic         *GenericStrategy            `json:"Generic,omitempty"`        
+	StrategyBuilder *string                     `json:"StrategyBuilder,omitempty"`
+	Similarities    *OfflineRecommendationsType `json:"Similarities"`             
+	NImpressions    *int64                      `json:"n_impressions,omitempty"`  
+	NSuccess        *int64                      `json:"n_success,omitempty"`      
+}
+
+type PlacementUpsert struct {
+	Enabled      *bool                             `json:"enabled,omitempty"`
+	EventDetail  *EventDetail                      `json:"event_detail"`     
+	EventTime    *int64                            `json:"event_time"`       
+	EventType    EventType                         `json:"event_type"`       
+	HTMLTemplate *string                           `json:"html_template"`    
+	ItemType     ItemType                          `json:"item_type"`        
+	Location     *Location                         `json:"location"`         
+	Name         string                            `json:"name"`             // Lowercase no spaces allowed
+	Ranking      StrategySelectorStrategyChooseOne `json:"ranking"`          // How the strategies are selected
+	Strategies   []WeightedGenericCandidateRec     `json:"strategies"`       
+	URLParams    map[string]string                 `json:"url_params"`       
+	UserInfo     UserInfo                          `json:"user_info"`        
+}
+
+type WeightedGenericCandidateRec struct {
+	Strategy *Strategy `json:"strategy"`
+	Weight   *float64  `json:"weight"`  
+}
+
+// Pre-defined strategies
+//
+// Build your custom strategies
+//
+// Similar description, image or other defined by you
+type StrategyGenericStrategies struct {
+	Generic         *GenericStrategy            `json:"Generic,omitempty"`        
+	StrategyBuilder *string                     `json:"StrategyBuilder,omitempty"`
+	Similarities    *OfflineRecommendationsType `json:"Similarities"`             
 }
 
 type PurchaseComplete struct {
 	CartID              *string             `json:"cart_id"`             
 	EventDetail         *EventDetail        `json:"event_detail"`        
-	EventTime           int64               `json:"event_time"`          
+	EventTime           *int64              `json:"event_time"`          
 	EventType           EventType           `json:"event_type"`          
 	Items               []ItemDetails       `json:"items"`               
 	PurchaseTransaction PurchaseTransaction `json:"purchase_transaction"`
 	UserInfo            UserInfo            `json:"user_info"`           
 }
 
-type RateProduct struct {
+type RateItem struct {
 	Comment     *string      `json:"comment"`     
 	EventDetail *EventDetail `json:"event_detail"`
-	EventTime   int64        `json:"event_time"`  
+	EventTime   *int64       `json:"event_time"`  
 	EventType   EventType    `json:"event_type"`  
 	Item        ItemDetails  `json:"item"`        
 	Rating      *float64     `json:"rating"`      
 	UserInfo    UserInfo     `json:"user_info"`   
 }
 
-type RecoRequest struct {
-	Content       *string      `json:"content"`       
-	EventDetail   *EventDetail `json:"event_detail"`  
-	EventTime     int64        `json:"event_time"`    
-	EventType     EventType    `json:"event_type"`    
-	Location      *Location    `json:"location"`      
-	NItems        int64        `json:"n_items"`       
-	PlacementName *string      `json:"placement_name"`
-	UserInfo      UserInfo     `json:"user_info"`     
+type RecoACK struct {
+	EventDetail     *EventDetail          `json:"event_detail"`    
+	EventTime       *int64                `json:"event_time"`      
+	EventType       EventType             `json:"event_type"`      
+	Items           []ItemDetailsRecoShow `json:"items"`           
+	PlacementConfig PlacementConfig       `json:"placement_config"`
+	UserInfo        UserInfo              `json:"user_info"`       
 }
 
-type LocationClass struct {
-	ProductPage  *string     `json:"ProductPage,omitempty"` 
-	AddToCart    *string     `json:"AddToCart,omitempty"`   
-	CategoryPage *string     `json:"CategoryPage,omitempty"`
-	SearchPage   *SearchInfo `json:"SearchPage,omitempty"`  
-	OtherPage    *PageInfo   `json:"OtherPage,omitempty"`   
-	UnknownPage  *PageInfo   `json:"UnknownPage,omitempty"` 
+// Note that ItemDetailsRecoShow is already translated
+type ItemDetailsRecoShow struct {
+	Attributes       Attributes                `json:"attributes"`       
+	Item             Item                      `json:"item"`             
+	RecID            string                    `json:"rec_id"`           
+	Score            *float64                  `json:"score"`            
+	StrategiesUsed   [][]StrategiesUsedElement `json:"strategies_used"`  
+	StrategySelected *Strategy                 `json:"strategy_selected"`
+}
+
+// Pre-defined strategies
+//
+// Build your custom strategies
+//
+// Similar description, image or other defined by you
+type StrategiesUsedGenericStrategies struct {
+	Generic         *GenericStrategy            `json:"Generic,omitempty"`        
+	StrategyBuilder *string                     `json:"StrategyBuilder,omitempty"`
+	Similarities    *OfflineRecommendationsType `json:"Similarities"`             
+}
+
+type PlacementConfig struct {
+	HTMLTemplate            *string                       `json:"html_template"`            
+	ItemAttributesSelection *ItemAttributesSelectionUnion `json:"item_attributes_selection"`
+	ItemType                ItemType                      `json:"item_type"`                
+	Location                *Location                     `json:"location"`                 
+	Name                    string                        `json:"name"`                     
+	Parameters              *StrategyParametersValues     `json:"parameters"`               
+}
+
+type ItemAttributesSelectionItemAttributesSelectionClass struct {
+	SelectedAttributes []ItemAttributesFieldNames `json:"SelectedAttributes"`
+}
+
+type StrategyParametersValues struct {
+	AdditionalIntParams map[string]int64  `json:"additional_int_params"`
+	AdditionalStrParams map[string]string `json:"additional_str_params"`
+	CategoryID          []string          `json:"category_id"`          
+	CategoryIDS         [][]string        `json:"category_ids"`         
+	Item                *Item             `json:"item"`                 
+	Items               []Item            `json:"items"`                
+	PageInfo            *PageInfo         `json:"page_info"`            
+	SearchInfo          *SearchInfo       `json:"search_info"`          
 }
 
 type PageInfo struct {
-	Content *string `json:"content"`
-	URL     *string `json:"url"`    
+	Content  *string   `json:"content"`  // Set page content
+	ItemType *ItemType `json:"item_type"`// Item type
+	URL      *string   `json:"url"`      // Set page URL
 }
 
 type SearchInfo struct {
-	Query *string `json:"query"`
+	Query *string `json:"query"`// Set the search query
+}
+
+type RecoRequest struct {
+	AdditionalURIParams map[string]string `json:"additional_uri_params"`
+	EventDetail         *EventDetail      `json:"event_detail"`         
+	EventTime           *int64            `json:"event_time"`           
+	EventType           EventType         `json:"event_type"`           
+	Locale              *Locale           `json:"locale"`               
+	Location            Location          `json:"location"`             
+	NItems              int64             `json:"n_items"`              
+	PlacementConfig     PlacementConfig   `json:"placement_config"`     
+	UserInfo            UserInfo          `json:"user_info"`            
 }
 
 type RecoShow struct {
-	EventDetail   *EventDetail             `json:"event_detail"`  
-	EventTime     int64                    `json:"event_time"`    
-	EventType     EventType                `json:"event_type"`    
-	ExperimentID  *string                  `json:"experiment_id"` 
-	Items         []ProductDetailsRecoShow `json:"items"`         
-	Location      *Location                `json:"location"`      
-	PlacementName *string                  `json:"placement_name"`
-	RecID         string                   `json:"rec_id"`        
-	UserInfo      UserInfo                 `json:"user_info"`     
-}
-
-type ProductDetailsRecoShow struct {
-	CanonicalProductURI *string    `json:"canonical_product_uri"`
-	CurrencyCode        Currency   `json:"currency_code"`        
-	ExactPrice          ExactPrice `json:"exact_price"`          
-	ID                  string     `json:"id"`                   
-	Images              []Image    `json:"images"`               
-	Title               string     `json:"title"`                
-}
-
-type ExactPrice struct {
-	DisplayPrice  float64 `json:"display_price"` 
-	OriginalPrice float64 `json:"original_price"`
-}
-
-type Image struct {
-	Height string `json:"height"`
-	URI    string `json:"uri"`   
-	Width  string `json:"width"` 
+	AdditionalURIParams map[string]string     `json:"additional_uri_params"`
+	EventDetail         *EventDetail          `json:"event_detail"`         
+	EventTime           *int64                `json:"event_time"`           
+	EventType           EventType             `json:"event_type"`           
+	ExperimentID        *string               `json:"experiment_id"`        
+	Items               []ItemDetailsRecoShow `json:"items"`                
+	PlacementConfig     PlacementConfig       `json:"placement_config"`     
+	UserInfo            UserInfo              `json:"user_info"`            
 }
 
 type RemoveFromCart struct {
-	CartID      *string       `json:"cart_id"`     
-	EventDetail *EventDetail  `json:"event_detail"`
-	EventTime   int64         `json:"event_time"`  
-	EventType   EventType     `json:"event_type"`  
-	Items       []ItemDetails `json:"items"`       
-	UserInfo    UserInfo      `json:"user_info"`   
+	CartID      *string      `json:"cart_id"`     
+	EventDetail *EventDetail `json:"event_detail"`
+	EventTime   *int64       `json:"event_time"`  
+	EventType   EventType    `json:"event_type"`  
+	Item        ItemDetails  `json:"item"`        
+	UserInfo    UserInfo     `json:"user_info"`   
 }
 
 type RemoveFromList struct {
 	EventDetail *EventDetail  `json:"event_detail"`
-	EventTime   int64         `json:"event_time"`  
+	EventTime   *int64        `json:"event_time"`  
 	EventType   EventType     `json:"event_type"`  
 	Items       []ItemDetails `json:"items"`       
 	ListID      *string       `json:"list_id"`     
 	UserInfo    UserInfo      `json:"user_info"`   
 }
 
-type RemoveItem struct {
-	EventDetail *EventDetail `json:"event_detail"`
-	EventTime   int64        `json:"event_time"`  
-	EventType   EventType    `json:"event_type"`  
-	ItemID      string       `json:"item_id"`     
-	UserInfo    UserInfo     `json:"user_info"`   
+type SearchItems struct {
+	EventDetail *EventDetail  `json:"event_detail"`
+	EventTime   *int64        `json:"event_time"`  
+	EventType   EventType     `json:"event_type"`  
+	Items       []ItemDetails `json:"items"`       
+	Query       string        `json:"query"`       
+	UserInfo    UserInfo      `json:"user_info"`   
 }
 
 type CartPageView struct {
 	CartID      *string       `json:"cart_id"`     
 	EventDetail *EventDetail  `json:"event_detail"`
-	EventTime   int64         `json:"event_time"`  
+	EventTime   *int64        `json:"event_time"`  
 	EventType   EventType     `json:"event_type"`  
 	Items       []ItemDetails `json:"items"`       
 	UserInfo    UserInfo      `json:"user_info"`   
 }
 
+type SmartSearchRequest struct {
+	EventDetail *EventDetail      `json:"event_detail"`
+	EventTime   *int64            `json:"event_time"`  
+	EventType   EventType         `json:"event_type"`  
+	Filter      map[string]string `json:"filter"`      
+	NItems      int64             `json:"n_items"`     
+	Page        int64             `json:"page"`        
+	Query       string            `json:"query"`       
+	SearchOrder SearchOrder       `json:"search_order"`
+	UserInfo    UserInfo          `json:"user_info"`   
+}
+
+type SmartSearchShow struct {
+	EventDetail *EventDetail          `json:"event_detail"`
+	EventTime   *int64                `json:"event_time"`  
+	EventType   EventType             `json:"event_type"`  
+	Items       []ItemDetailsRecoShow `json:"items"`       
+	UserInfo    UserInfo              `json:"user_info"`   
+}
+
 type SortItems struct {
 	EventDetail *EventDetail `json:"event_detail"`
-	EventTime   int64        `json:"event_time"`  
+	EventTime   *int64       `json:"event_time"`  
 	EventType   EventType    `json:"event_type"`  
 	SortOrder   *SortOrder   `json:"sort_order"`  
 	UserInfo    UserInfo     `json:"user_info"`   
 }
 
+type StrategyParametersTypes struct {
+	AdditionalIntParams []string `json:"additional_int_params"`
+	AdditionalStrParams []string `json:"additional_str_params"`
+	CategoryID          bool     `json:"category_id"`          
+	CategoryIDS         bool     `json:"category_ids"`         
+	Item                bool     `json:"item"`                 
+	ItemsInfo           bool     `json:"items_info"`           
+	PageInfo            bool     `json:"page_info"`            
+	SearchInfo          bool     `json:"search_info"`          
+}
+
 type UnknownEvent struct {
 	EventDetail *EventDetail `json:"event_detail"`
-	EventTime   int64        `json:"event_time"`  
+	EventTime   *int64       `json:"event_time"`  
 	EventType   EventType    `json:"event_type"`  
 	UserInfo    UserInfo     `json:"user_info"`   
 }
 
-type UpsertItem struct {
-	EventDetail    *EventDetail   `json:"event_detail"`   
-	EventTime      int64          `json:"event_time"`     
-	EventType      EventType      `json:"event_type"`     
-	ProductDetails ProductDetails `json:"product_details"`
-	UserInfo       UserInfo       `json:"user_info"`      
-}
-
-type ProductDetails struct {
-	Attributes            map[string]string  `json:"attributes"`            
-	AvailableQuantity     *int64             `json:"available_quantity"`    
-	CanonicalProductURI   *string            `json:"canonical_product_uri"` 
-	CategoricalAttributes map[string]string  `json:"categorical_attributes"`
-	Categories            [][]string         `json:"categories"`            
-	Costs                 map[string]float64 `json:"costs"`                 
-	CurrencyCode          Currency           `json:"currency_code"`         
-	Description           *string            `json:"description"`           
-	ExactPrice            ExactPrice         `json:"exact_price"`           
-	ID                    string             `json:"id"`                    
-	Images                []Image            `json:"images"`                
-	ItemGroupID           *string            `json:"item_group_id"`         
-	LanguageCode          *string            `json:"language_code"`         
-	NumericAttributes     map[string]float64 `json:"numeric_attributes"`    
-	StockState            StockState         `json:"stock_state"`           
-	Tags                  []string           `json:"tags"`                  
-	Title                 string             `json:"title"`                 
+type VideoInteraction struct {
+	Completed   *bool         `json:"completed"`   
+	EventDetail *EventDetail  `json:"event_detail"`
+	EventTime   *int64        `json:"event_time"`  
+	EventType   EventType     `json:"event_type"`  
+	Items       []ItemDetails `json:"items"`       
+	UserInfo    UserInfo      `json:"user_info"`   
+	VideoItem   *Item         `json:"video_item"`  
+	WatchedSecs *int64        `json:"watched_secs"`
 }
 
 type EventType string
@@ -613,24 +1118,34 @@ const (
 	EventTypeAddToCart EventType = "AddToCart"
 	EventTypeAddToList EventType = "AddToList"
 	EventTypeCartPageView EventType = "CartPageView"
-	EventTypeCategoryPageView EventType = "CategoryPageView"
+	EventTypeChangeItemStockState EventType = "ChangeItemStockState"
 	EventTypeCheckoutStart EventType = "CheckoutStart"
-	EventTypeDetailProductView EventType = "DetailProductView"
+	EventTypeDetailItemView EventType = "DetailItemView"
 	EventTypeHomePageView EventType = "HomePageView"
 	EventTypeImageInteraction EventType = "ImageInteraction"
+	EventTypeItemRemove EventType = "ItemRemove"
+	EventTypeItemUpsert EventType = "ItemUpsert"
+	EventTypeItemsView EventType = "ItemsView"
 	EventTypeListView EventType = "ListView"
+	EventTypeOfflineRecommendationsRemove EventType = "OfflineRecommendationsRemove"
+	EventTypeOfflineRecommendationsUpsert EventType = "OfflineRecommendationsUpsert"
 	EventTypeOtherInteraction EventType = "OtherInteraction"
 	EventTypePageVisit EventType = "PageVisit"
+	EventTypePlacementRemove EventType = "PlacementRemove"
+	EventTypePlacementUpsert EventType = "PlacementUpsert"
 	EventTypePurchaseComplete EventType = "PurchaseComplete"
-	EventTypeRateProduct EventType = "RateProduct"
+	EventTypeRateItem EventType = "RateItem"
+	EventTypeRecoACK EventType = "RecoAck"
 	EventTypeRecoRequest EventType = "RecoRequest"
 	EventTypeRecoShow EventType = "RecoShow"
 	EventTypeRemoveFromCart EventType = "RemoveFromCart"
 	EventTypeRemoveFromList EventType = "RemoveFromList"
-	EventTypeRemoveItem EventType = "RemoveItem"
+	EventTypeSearchItems EventType = "SearchItems"
+	EventTypeSmartSearchRequest EventType = "SmartSearchRequest"
+	EventTypeSmartSearchShow EventType = "SmartSearchShow"
 	EventTypeSortItems EventType = "SortItems"
 	EventTypeUnknownEvent EventType = "UnknownEvent"
-	EventTypeUpsertItem EventType = "UpsertItem"
+	EventTypeVideoInteraction EventType = "VideoInteraction"
 )
 
 type Currency string
@@ -806,6 +1321,22 @@ const (
 	Zwl Currency = "ZWL"
 )
 
+type StockStateEnum string
+const (
+	BackOrder StockStateEnum = "BackOrder"
+	InStock StockStateEnum = "InStock"
+	OutOfStock StockStateEnum = "OutOfStock"
+	PreOrder StockStateEnum = "PreOrder"
+)
+
+type ItemType string
+const (
+	Ecommerce ItemType = "Ecommerce"
+	ItemTypeArticle ItemType = "Article"
+	ItemTypeUnknown ItemType = "Unknown"
+	ItemTypeVideo ItemType = "Video"
+)
+
 type Gender string
 const (
 	Female Gender = "Female"
@@ -813,54 +1344,483 @@ const (
 	Other Gender = "Other"
 )
 
-type LocationEnum string
+type PrivacySetting string
 const (
-	CheckoutPage LocationEnum = "CheckoutPage"
-	Error404 LocationEnum = "Error404"
-	HomePage LocationEnum = "HomePage"
+	NonPersonalized PrivacySetting = "NonPersonalized"
+	PrivacySettingPersonalized PrivacySetting = "Personalized"
+)
+
+type BuilderFn1 string
+const (
+	ArgMax BuilderFn1 = "ArgMax"
+	ArgMin BuilderFn1 = "ArgMin"
+	ConvertToPlacementItemType BuilderFn1 = "ConvertToPlacementItemType"
+	Invert BuilderFn1 = "Invert"
+	Ranking BuilderFn1 = "Ranking"
+)
+
+type BuilderFn2 string
+const (
+	Expand BuilderFn2 = "Expand"
+	Highest BuilderFn2 = "Highest"
+	Intersect BuilderFn2 = "Intersect"
+	Less BuilderFn2 = "Less"
+	LessEq BuilderFn2 = "LessEq"
+	Lookup BuilderFn2 = "Lookup"
+	Lowest BuilderFn2 = "Lowest"
+	More BuilderFn2 = "More"
+	MoreEq BuilderFn2 = "MoreEq"
+	Remove BuilderFn2 = "Remove"
+	Union BuilderFn2 = "Union"
+)
+
+type BuilderVariable string
+const (
+	AllItems BuilderVariable = "AllItems"
+	ItemCurrent BuilderVariable = "ItemCurrent"
+	ItemCurrentType BuilderVariable = "ItemCurrentType"
+	ItemsAlsoAddedToCartInSession BuilderVariable = "ItemsAlsoAddedToCartInSession"
+	ItemsAlsoBoughtInSession BuilderVariable = "ItemsAlsoBoughtInSession"
+	ItemsAlsoSeenInSession BuilderVariable = "ItemsAlsoSeenInSession"
+	ItemsInCart BuilderVariable = "ItemsInCart"
+	ItemsRecommendedSessionCounter BuilderVariable = "ItemsRecommendedSessionCounter"
+	ItemsSeenInSession BuilderVariable = "ItemsSeenInSession"
+	ItemsVisitedCounter BuilderVariable = "ItemsVisitedCounter"
+)
+
+type ArticleFieldName string
+const (
+	Author ArticleFieldName = "Author"
+	Snippet ArticleFieldName = "Snippet"
+	TimestampAdded ArticleFieldName = "TimestampAdded"
+)
+
+type CategoriesFieldName string
+const (
+	CategoriesFieldNameCategories CategoriesFieldName = "Categories"
+)
+
+type CostsFieldName string
+const (
+	CostsFieldNameCosts CostsFieldName = "Costs"
+)
+
+type DescriptionFieldName string
+const (
+	Content DescriptionFieldName = "Content"
+	LanguageCode DescriptionFieldName = "LanguageCode"
+	Title DescriptionFieldName = "Title"
+)
+
+type ItemEcommerceSpecFieldName string
+const (
+	ItemCode ItemEcommerceSpecFieldName = "ItemCode"
+	ItemGroupID ItemEcommerceSpecFieldName = "ItemGroupId"
+)
+
+type ImagesFieldName string
+const (
+	ImagesFieldNameImages ImagesFieldName = "Images"
+)
+
+type ExactPriceFieldName string
+const (
+	CurrencyCode ExactPriceFieldName = "CurrencyCode"
+	DisplayPrice ExactPriceFieldName = "DisplayPrice"
+	OriginalPrice ExactPriceFieldName = "OriginalPrice"
+)
+
+type StockFieldName string
+const (
+	AvailableQuantity StockFieldName = "AvailableQuantity"
+	Quantity StockFieldName = "Quantity"
+	StockState StockFieldName = "StockState"
+)
+
+type TagsFieldName string
+const (
+	TagsFieldNameTags TagsFieldName = "Tags"
+)
+
+type ItemURLFieldName string
+const (
+	CanonicalURI ItemURLFieldName = "CanonicalUri"
+	CanonicalURIWithParams ItemURLFieldName = "CanonicalUriWithParams"
+	URLParams ItemURLFieldName = "UrlParams"
+)
+
+type VideoFieldName string
+const (
+	DurationSecs VideoFieldName = "DurationSecs"
+	URI VideoFieldName = "Uri"
+)
+
+type ItemAttributesSelectionEnum string
+const (
+	AllAttributes ItemAttributesSelectionEnum = "AllAttributes"
+)
+
+type OfflineRecommendationsTypeEnum string
+const (
+	AttributesSimilarity OfflineRecommendationsTypeEnum = "AttributesSimilarity"
+	ImageSimilarity OfflineRecommendationsTypeEnum = "ImageSimilarity"
+	TextSimilarity OfflineRecommendationsTypeEnum = "TextSimilarity"
+)
+
+type GenericStrategy string
+const (
+	AlsoAddedToCart GenericStrategy = "AlsoAddedToCart"
+	AlsoPurchased GenericStrategy = "AlsoPurchased"
+	AlsoSeen GenericStrategy = "AlsoSeen"
+	BestsellerCategory GenericStrategy = "BestsellerCategory"
+	BestsellerGlobal GenericStrategy = "BestsellerGlobal"
+	ContentMatching GenericStrategy = "ContentMatching"
+	MostPurchases GenericStrategy = "MostPurchases"
+	MostViews GenericStrategy = "MostViews"
+	SearchMatching GenericStrategy = "SearchMatching"
+	SeenInSession GenericStrategy = "SeenInSession"
+	SeenInSessionCoccurAddedToCart GenericStrategy = "SeenInSessionCoccurAddedToCart"
+	SeenInSessionCoccurSeen GenericStrategy = "SeenInSessionCoccurSeen"
+)
+
+type StrategyEnum string
+const (
+	StrategyUnknown StrategyEnum = "Unknown"
+)
+
+// Choose location
+type Location string
+const (
+	CategoryPage Location = "CategoryPage"
+	CheckoutPage Location = "CheckoutPage"
+	Error404 Location = "Error404"
+	HomePage Location = "HomePage"
+	ItemPage Location = "ItemPage"
+	LocationAddToCart Location = "AddToCart"
+	OtherPage Location = "OtherPage"
+	SearchPage Location = "SearchPage"
+	UnknownPage Location = "UnknownPage"
+)
+
+// How the strategies are selected
+type StrategySelectorStrategyChooseOne string
+const (
+	RankingModel StrategySelectorStrategyChooseOne = "RankingModel"
+	ThompsonSampling StrategySelectorStrategyChooseOne = "ThompsonSampling"
+	WeightedSample StrategySelectorStrategyChooseOne = "WeightedSample"
+)
+
+type Locale string
+const (
+	AFZA Locale = "af_ZA"
+	ArAR Locale = "ar_AR"
+	AsIN Locale = "as_IN"
+	AzAZ Locale = "az_AZ"
+	BeBY Locale = "be_BY"
+	BgBG Locale = "bg_BG"
+	BnIN Locale = "bn_IN"
+	BrFR Locale = "br_FR"
+	BsBA Locale = "bs_BA"
+	CAES Locale = "ca_ES"
+	CSCZ Locale = "cs_CZ"
+	CbIQ Locale = "cb_IQ"
+	CoFR Locale = "co_FR"
+	CxPH Locale = "cx_PH"
+	CyGB Locale = "cy_GB"
+	DaDK Locale = "da_DK"
+	DeDE Locale = "de_DE"
+	ElGR Locale = "el_GR"
+	EnGB Locale = "en_GB"
+	EnUD Locale = "en_UD"
+	EnUS Locale = "en_US"
+	EsES Locale = "es_ES"
+	EsLA Locale = "es_LA"
+	EtEE Locale = "et_EE"
+	EuES Locale = "eu_ES"
+	FaIR Locale = "fa_IR"
+	FfNG Locale = "ff_NG"
+	FiFI Locale = "fi_FI"
+	FoFO Locale = "fo_FO"
+	FrCA Locale = "fr_CA"
+	FrFR Locale = "fr_FR"
+	FyNL Locale = "fy_NL"
+	GaIE Locale = "ga_IE"
+	GlES Locale = "gl_ES"
+	GnPY Locale = "gn_PY"
+	GuIN Locale = "gu_IN"
+	HaNG Locale = "ha_NG"
+	HeIL Locale = "he_IL"
+	HiIN Locale = "hi_IN"
+	HrHR Locale = "hr_HR"
+	HuHU Locale = "hu_HU"
+	HyAM Locale = "hy_AM"
+	IDID Locale = "id_ID"
+	IsIS Locale = "is_IS"
+	ItIT Locale = "it_IT"
+	JaJP Locale = "ja_JP"
+	JaKS Locale = "ja_KS"
+	JvID Locale = "jv_ID"
+	KMKH Locale = "km_KH"
+	KaGE Locale = "ka_GE"
+	KkKZ Locale = "kk_KZ"
+	KnIN Locale = "kn_IN"
+	KoKR Locale = "ko_KR"
+	KuTR Locale = "ku_TR"
+	LVLV Locale = "lv_LV"
+	LtLT Locale = "lt_LT"
+	MSMY Locale = "ms_MY"
+	MTMT Locale = "mt_MT"
+	MgMG Locale = "mg_MG"
+	MkMK Locale = "mk_MK"
+	MlIN Locale = "ml_IN"
+	MnMN Locale = "mn_MN"
+	MrIN Locale = "mr_IN"
+	MyMM Locale = "my_MM"
+	NbNO Locale = "nb_NO"
+	NeNP Locale = "ne_NP"
+	NlBE Locale = "nl_BE"
+	NlNL Locale = "nl_NL"
+	NnNO Locale = "nn_NO"
+	OrIN Locale = "or_IN"
+	PSAF Locale = "ps_AF"
+	PaIN Locale = "pa_IN"
+	PlPL Locale = "pl_PL"
+	PtBR Locale = "pt_BR"
+	PtPT Locale = "pt_PT"
+	QzMM Locale = "qz_MM"
+	RoRO Locale = "ro_RO"
+	RuRU Locale = "ru_RU"
+	RwRW Locale = "rw_RW"
+	ScIT Locale = "sc_IT"
+	SiLK Locale = "si_LK"
+	SkSK Locale = "sk_SK"
+	SlSI Locale = "sl_SI"
+	SoSO Locale = "so_SO"
+	SqAL Locale = "sq_AL"
+	SrRS Locale = "sr_RS"
+	SvSE Locale = "sv_SE"
+	SwKE Locale = "sw_KE"
+	SzPL Locale = "sz_PL"
+	TaIN Locale = "ta_IN"
+	TeIN Locale = "te_IN"
+	TgTJ Locale = "tg_TJ"
+	ThTH Locale = "th_TH"
+	TlPH Locale = "tl_PH"
+	TrTR Locale = "tr_TR"
+	TzMA Locale = "tz_MA"
+	UkUA Locale = "uk_UA"
+	UrPK Locale = "ur_PK"
+	UzUZ Locale = "uz_UZ"
+	ViVN Locale = "vi_VN"
+	ZhCN Locale = "zh_CN"
+	ZhHK Locale = "zh_HK"
+	ZhTW Locale = "zh_TW"
+)
+
+type SearchOrder string
+const (
+	Newest SearchOrder = "Newest"
+	Oldest SearchOrder = "Oldest"
+	RelevanceAsc SearchOrder = "RelevanceAsc"
+	RelevanceDesc SearchOrder = "RelevanceDesc"
+	SearchOrderPersonalized SearchOrder = "Personalized"
+	SearchOrderPopularityAsc SearchOrder = "PopularityAsc"
+	SearchOrderPopularityDesc SearchOrder = "PopularityDesc"
+	SearchOrderPriceAsc SearchOrder = "PriceAsc"
+	SearchOrderPriceDesc SearchOrder = "PriceDesc"
+	SearchOrderRatingAsc SearchOrder = "RatingAsc"
+	SearchOrderRatingDesc SearchOrder = "RatingDesc"
 )
 
 type SortOrder string
 const (
 	NameAsc SortOrder = "NameAsc"
 	NameDesc SortOrder = "NameDesc"
-	PopularityAsc SortOrder = "PopularityAsc"
-	PopularityDesc SortOrder = "PopularityDesc"
-	PriceAsc SortOrder = "PriceAsc"
-	PriceDesc SortOrder = "PriceDesc"
-	RatingAsc SortOrder = "RatingAsc"
-	RatingDesc SortOrder = "RatingDesc"
+	SortOrderPopularityAsc SortOrder = "PopularityAsc"
+	SortOrderPopularityDesc SortOrder = "PopularityDesc"
+	SortOrderPriceAsc SortOrder = "PriceAsc"
+	SortOrderPriceDesc SortOrder = "PriceDesc"
+	SortOrderRatingAsc SortOrder = "RatingAsc"
+	SortOrderRatingDesc SortOrder = "RatingDesc"
 )
 
-type StockState string
-const (
-	BackOrder StockState = "BackOrder"
-	InStock StockState = "InStock"
-	OutOfStock StockState = "OutOfStock"
-	PreOrder StockState = "PreOrder"
-)
-
-type Location struct {
-	Enum          *LocationEnum
-	LocationClass *LocationClass
+type TextContent struct {
+	String    *string
+	StringMap map[string]string
 }
 
-func (x *Location) UnmarshalJSON(data []byte) error {
-	x.LocationClass = nil
+func (x *TextContent) UnmarshalJSON(data []byte) error {
+	x.StringMap = nil
+	object, err := unmarshalUnion(data, nil, nil, nil, &x.String, false, nil, false, nil, true, &x.StringMap, false, nil, false)
+	if err != nil {
+		return err
+	}
+	if object {
+	}
+	return nil
+}
+
+func (x *TextContent) MarshalJSON() ([]byte, error) {
+	return marshalUnion(nil, nil, nil, x.String, false, nil, false, nil, x.StringMap != nil, x.StringMap, false, nil, false)
+}
+
+type ContentUnion struct {
+	String    *string
+	StringMap map[string]string
+}
+
+func (x *ContentUnion) UnmarshalJSON(data []byte) error {
+	x.StringMap = nil
+	object, err := unmarshalUnion(data, nil, nil, nil, &x.String, false, nil, false, nil, true, &x.StringMap, false, nil, true)
+	if err != nil {
+		return err
+	}
+	if object {
+	}
+	return nil
+}
+
+func (x *ContentUnion) MarshalJSON() ([]byte, error) {
+	return marshalUnion(nil, nil, nil, x.String, false, nil, false, nil, x.StringMap != nil, x.StringMap, false, nil, true)
+}
+
+type ItemAttributesSelection struct {
+	Enum                         *ItemAttributesSelectionEnum
+	ItemAttributesSelectionClass *ItemAttributesSelectionClass
+}
+
+func (x *ItemAttributesSelection) UnmarshalJSON(data []byte) error {
+	x.ItemAttributesSelectionClass = nil
 	x.Enum = nil
-	var c LocationClass
+	var c ItemAttributesSelectionClass
 	object, err := unmarshalUnion(data, nil, nil, nil, nil, false, nil, true, &c, false, nil, true, &x.Enum, false)
 	if err != nil {
 		return err
 	}
 	if object {
-		x.LocationClass = &c
+		x.ItemAttributesSelectionClass = &c
 	}
 	return nil
 }
 
-func (x *Location) MarshalJSON() ([]byte, error) {
-	return marshalUnion(nil, nil, nil, nil, false, nil, x.LocationClass != nil, x.LocationClass, false, nil, x.Enum != nil, x.Enum, false)
+func (x *ItemAttributesSelection) MarshalJSON() ([]byte, error) {
+	return marshalUnion(nil, nil, nil, nil, false, nil, x.ItemAttributesSelectionClass != nil, x.ItemAttributesSelectionClass, false, nil, x.Enum != nil, x.Enum, false)
+}
+
+type OfflineRecommendationsType struct {
+	Enum                            *OfflineRecommendationsTypeEnum
+	OfflineRecommendationsTypeClass *OfflineRecommendationsTypeClass
+}
+
+func (x *OfflineRecommendationsType) UnmarshalJSON(data []byte) error {
+	x.OfflineRecommendationsTypeClass = nil
+	x.Enum = nil
+	var c OfflineRecommendationsTypeClass
+	object, err := unmarshalUnion(data, nil, nil, nil, nil, false, nil, true, &c, false, nil, true, &x.Enum, false)
+	if err != nil {
+		return err
+	}
+	if object {
+		x.OfflineRecommendationsTypeClass = &c
+	}
+	return nil
+}
+
+func (x *OfflineRecommendationsType) MarshalJSON() ([]byte, error) {
+	return marshalUnion(nil, nil, nil, nil, false, nil, x.OfflineRecommendationsTypeClass != nil, x.OfflineRecommendationsTypeClass, false, nil, x.Enum != nil, x.Enum, false)
+}
+
+type PlacementsStatisticElement struct {
+	Enum              *StrategyEnum
+	SuccessTriesClass *SuccessTriesClass
+}
+
+func (x *PlacementsStatisticElement) UnmarshalJSON(data []byte) error {
+	x.SuccessTriesClass = nil
+	x.Enum = nil
+	var c SuccessTriesClass
+	object, err := unmarshalUnion(data, nil, nil, nil, nil, false, nil, true, &c, false, nil, true, &x.Enum, false)
+	if err != nil {
+		return err
+	}
+	if object {
+		x.SuccessTriesClass = &c
+	}
+	return nil
+}
+
+func (x *PlacementsStatisticElement) MarshalJSON() ([]byte, error) {
+	return marshalUnion(nil, nil, nil, nil, false, nil, x.SuccessTriesClass != nil, x.SuccessTriesClass, false, nil, x.Enum != nil, x.Enum, false)
+}
+
+type Strategy struct {
+	Enum                      *StrategyEnum
+	StrategyGenericStrategies *StrategyGenericStrategies
+}
+
+func (x *Strategy) UnmarshalJSON(data []byte) error {
+	x.StrategyGenericStrategies = nil
+	x.Enum = nil
+	var c StrategyGenericStrategies
+	object, err := unmarshalUnion(data, nil, nil, nil, nil, false, nil, true, &c, false, nil, true, &x.Enum, false)
+	if err != nil {
+		return err
+	}
+	if object {
+		x.StrategyGenericStrategies = &c
+	}
+	return nil
+}
+
+func (x *Strategy) MarshalJSON() ([]byte, error) {
+	return marshalUnion(nil, nil, nil, nil, false, nil, x.StrategyGenericStrategies != nil, x.StrategyGenericStrategies, false, nil, x.Enum != nil, x.Enum, false)
+}
+
+type StrategiesUsedElement struct {
+	Double                          *float64
+	Enum                            *StrategyEnum
+	StrategiesUsedGenericStrategies *StrategiesUsedGenericStrategies
+}
+
+func (x *StrategiesUsedElement) UnmarshalJSON(data []byte) error {
+	x.StrategiesUsedGenericStrategies = nil
+	x.Enum = nil
+	var c StrategiesUsedGenericStrategies
+	object, err := unmarshalUnion(data, nil, &x.Double, nil, nil, false, nil, true, &c, false, nil, true, &x.Enum, false)
+	if err != nil {
+		return err
+	}
+	if object {
+		x.StrategiesUsedGenericStrategies = &c
+	}
+	return nil
+}
+
+func (x *StrategiesUsedElement) MarshalJSON() ([]byte, error) {
+	return marshalUnion(nil, x.Double, nil, nil, false, nil, x.StrategiesUsedGenericStrategies != nil, x.StrategiesUsedGenericStrategies, false, nil, x.Enum != nil, x.Enum, false)
+}
+
+type ItemAttributesSelectionUnion struct {
+	Enum                                                *ItemAttributesSelectionEnum
+	ItemAttributesSelectionItemAttributesSelectionClass *ItemAttributesSelectionItemAttributesSelectionClass
+}
+
+func (x *ItemAttributesSelectionUnion) UnmarshalJSON(data []byte) error {
+	x.ItemAttributesSelectionItemAttributesSelectionClass = nil
+	x.Enum = nil
+	var c ItemAttributesSelectionItemAttributesSelectionClass
+	object, err := unmarshalUnion(data, nil, nil, nil, nil, false, nil, true, &c, false, nil, true, &x.Enum, true)
+	if err != nil {
+		return err
+	}
+	if object {
+		x.ItemAttributesSelectionItemAttributesSelectionClass = &c
+	}
+	return nil
+}
+
+func (x *ItemAttributesSelectionUnion) MarshalJSON() ([]byte, error) {
+	return marshalUnion(nil, nil, nil, nil, false, nil, x.ItemAttributesSelectionItemAttributesSelectionClass != nil, x.ItemAttributesSelectionItemAttributesSelectionClass, false, nil, x.Enum != nil, x.Enum, true)
 }
 
 func unmarshalUnion(data []byte, pi **int64, pf **float64, pb **bool, ps **string, haveArray bool, pa interface{}, haveObject bool, pc interface{}, haveMap bool, pm interface{}, haveEnum bool, pe interface{}, nullable bool) (bool, error) {
