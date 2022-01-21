@@ -19,9 +19,6 @@
 //    builderVariable, err := UnmarshalBuilderVariable(bytes)
 //    bytes, err = builderVariable.Marshal()
 //
-//    categoryPageView, err := UnmarshalCategoryPageView(bytes)
-//    bytes, err = categoryPageView.Marshal()
-//
 //    changeItemStockState, err := UnmarshalChangeItemStockState(bytes)
 //    bytes, err = changeItemStockState.Marshal()
 //
@@ -45,9 +42,6 @@
 //
 //    itemRemove, err := UnmarshalItemRemove(bytes)
 //    bytes, err = itemRemove.Marshal()
-//
-//    itemsImpression, err := UnmarshalItemsImpression(bytes)
-//    bytes, err = itemsImpression.Marshal()
 //
 //    itemsView, err := UnmarshalItemsView(bytes)
 //    bytes, err = itemsView.Marshal()
@@ -190,16 +184,6 @@ func (r *BuilderVariable) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
-func UnmarshalCategoryPageView(data []byte) (CategoryPageView, error) {
-	var r CategoryPageView
-	err := json.Unmarshal(data, &r)
-	return r, err
-}
-
-func (r *CategoryPageView) Marshal() ([]byte, error) {
-	return json.Marshal(r)
-}
-
 func UnmarshalChangeItemStockState(data []byte) (ChangeItemStockState, error) {
 	var r ChangeItemStockState
 	err := json.Unmarshal(data, &r)
@@ -279,16 +263,6 @@ func UnmarshalItemRemove(data []byte) (ItemRemove, error) {
 }
 
 func (r *ItemRemove) Marshal() ([]byte, error) {
-	return json.Marshal(r)
-}
-
-func UnmarshalItemsImpression(data []byte) (ItemsImpression, error) {
-	var r ItemsImpression
-	err := json.Unmarshal(data, &r)
-	return r, err
-}
-
-func (r *ItemsImpression) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
@@ -560,24 +534,24 @@ type EventDetail struct {
 
 type ItemDetails struct {
 	Attributes *Attributes `json:"attributes"`
-	ItemID     string      `json:"item_id"`   
-	ItemType   ItemType    `json:"item_type"` 
+	Item       Item        `json:"item"`      
 }
 
 // This attribute structure is inspired by ECS dense components also know as table-based
 // component list.
 type Attributes struct {
-	Article     *Article           `json:"article"`    
-	Categories  *Categories        `json:"categories"` 
-	Costs       *Costs             `json:"costs"`      
-	Description *Description       `json:"description"`
-	Ecommerce   *ItemEcommerceSpec `json:"ecommerce"`  
-	Images      *Images            `json:"images"`     
-	Price       *ExactPrice        `json:"price"`      
-	Stock       *Stock             `json:"stock"`      
-	Tags        *Tags              `json:"tags"`       
-	URL         ItemURL            `json:"url"`        
-	Video       *Video             `json:"video"`      
+	Article      *Article           `json:"article"`      
+	Categories   *Categories        `json:"categories"`   
+	Costs        *Costs             `json:"costs"`        
+	Description  *Description       `json:"description"`  
+	Ecommerce    *ItemEcommerceSpec `json:"ecommerce"`    
+	Images       *Images            `json:"images"`       
+	Price        *ExactPrice        `json:"price"`        
+	RelatedItems []Item             `json:"related_items"`
+	Stock        *Stock             `json:"stock"`        
+	Tags         *Tags              `json:"tags"`         
+	URL          ItemURL            `json:"url"`          
+	Video        *Video             `json:"video"`        
 }
 
 type Article struct {
@@ -619,6 +593,11 @@ type ExactPrice struct {
 	CurrencyCode  *Currency `json:"currency_code"` 
 	DisplayPrice  float64   `json:"display_price"` 
 	OriginalPrice float64   `json:"original_price"`
+}
+
+type Item struct {
+	ItemID   string   `json:"item_id"`  
+	ItemType ItemType `json:"item_type"`
 }
 
 type Stock struct {
@@ -672,16 +651,6 @@ type APISettings struct {
 	URLAPI string `json:"url_api"`
 }
 
-type CategoryPageView struct {
-	EventDetail    *EventDetail  `json:"event_detail"`   
-	EventTime      *int64        `json:"event_time"`     
-	EventType      EventType     `json:"event_type"`     
-	Items          []ItemDetails `json:"items"`          
-	OnScreen       bool          `json:"on_screen"`      
-	PageCategories []string      `json:"page_categories"`
-	UserInfo       UserInfo      `json:"user_info"`      
-}
-
 type ChangeItemStockState struct {
 	EventDetail *EventDetail   `json:"event_detail"`
 	EventTime   *int64         `json:"event_time"`  
@@ -689,11 +658,6 @@ type ChangeItemStockState struct {
 	Item        Item           `json:"item"`        
 	StockState  StockStateEnum `json:"stock_state"` 
 	UserInfo    UserInfo       `json:"user_info"`   
-}
-
-type Item struct {
-	ItemID   string   `json:"item_id"`  
-	ItemType ItemType `json:"item_type"`
 }
 
 type CheckoutStart struct {
@@ -773,16 +737,6 @@ type ItemRemove struct {
 	EventType   EventType    `json:"event_type"`  
 	Item        Item         `json:"item"`        
 	UserInfo    UserInfo     `json:"user_info"`   
-}
-
-type ItemsImpression struct {
-	EventDetail    *EventDetail  `json:"event_detail"`   
-	EventTime      *int64        `json:"event_time"`     
-	EventType      EventType     `json:"event_type"`     
-	Items          []ItemDetails `json:"items"`          
-	OnScreen       bool          `json:"on_screen"`      
-	PageCategories []string      `json:"page_categories"`
-	UserInfo       UserInfo      `json:"user_info"`      
 }
 
 type ItemsView struct {
@@ -869,17 +823,63 @@ type LIFOVecForUint128 struct {
 	Capacity int64   `json:"capacity"`
 }
 
+// Parametrized strategies
+//
 // Pre-defined strategies
 //
 // Build your custom strategies
-//
-// Similar description, image or other defined by you
 type SuccessTriesClass struct {
-	Generic         *GenericStrategy            `json:"Generic,omitempty"`        
-	StrategyBuilder *string                     `json:"StrategyBuilder,omitempty"`
-	Similarities    *OfflineRecommendationsType `json:"Similarities"`             
-	NImpressions    *int64                      `json:"n_impressions,omitempty"`  
-	NSuccess        *int64                      `json:"n_success,omitempty"`      
+	Parametrized    *ParametrizedStrategy `json:"Parametrized,omitempty"`   
+	Generic         *GenericStrategy      `json:"Generic,omitempty"`        
+	StrategyBuilder *string               `json:"StrategyBuilder,omitempty"`
+	NImpressions    *int64                `json:"n_impressions,omitempty"`  
+	NSuccess        *int64                `json:"n_success,omitempty"`      
+}
+
+// Symbolic reference to accumulators instances in the context
+type ParametrizedStrategy struct {
+	VisitorItemCounter            *EventVisitorItemCounterStaticParams       `json:"VisitorItemCounter,omitempty"`           
+	ItemCounter                   *EventTypeItemCounterStaticParams          `json:"ItemCounter,omitempty"`                  
+	ItemCooccurences              *EventItemTypeItemCooccurenceStaticParams  `json:"ItemCooccurences,omitempty"`             
+	ContentItemMatcher            *ContentItemMatcherStaticParams            `json:"ContentItemMatcher,omitempty"`           
+	OfflineRecommendationsStorage *OfflineRecommendationsStorageStaticParams `json:"OfflineRecommendationsStorage,omitempty"`
+	SessionBasedCooccurence       *SessionItemsCooccurenceStaticParams       `json:"SessionBasedCooccurence,omitempty"`      
+}
+
+type ContentItemMatcherStaticParams struct {
+	ItemType *ItemType `json:"item_type"`
+}
+
+type EventItemTypeItemCooccurenceStaticParams struct {
+	EventTypeA EventType `json:"event_type_a"`
+	EventTypeB EventType `json:"event_type_b"`
+	ItemTypeA  ItemType  `json:"item_type_a"` 
+	ItemTypeB  ItemType  `json:"item_type_b"` 
+}
+
+type EventTypeItemCounterStaticParams struct {
+	EventType EventType `json:"event_type"`
+	ItemType  ItemType  `json:"item_type"` 
+}
+
+type OfflineRecommendationsStorageStaticParams struct {
+	RecType *OfflineRecommendationsType `json:"rec_type"`
+}
+
+// These are strategies that are just using other accumulators to generate candidates. They
+// don't have any internal state
+//
+// The use case is to generate candidates based on the recent user history and event type
+// and item type coocurrences
+type SessionItemsCooccurenceStaticParams struct {
+	Cooccurence   EventItemTypeItemCooccurenceStaticParams `json:"cooccurence"`   
+	ItemGenerator EventVisitorItemCounterStaticParams      `json:"item_generator"`
+}
+
+type EventVisitorItemCounterStaticParams struct {
+	EventType    EventType    `json:"event_type"`    
+	ItemType     ItemType     `json:"item_type"`     
+	UserInfoType UserInfoType `json:"user_info_type"`
 }
 
 type PlacementUpsert struct {
@@ -902,15 +902,15 @@ type WeightedGenericCandidateRec struct {
 	Weight   *float64  `json:"weight"`  
 }
 
+// Parametrized strategies
+//
 // Pre-defined strategies
 //
 // Build your custom strategies
-//
-// Similar description, image or other defined by you
-type StrategyGenericStrategies struct {
-	Generic         *GenericStrategy            `json:"Generic,omitempty"`        
-	StrategyBuilder *string                     `json:"StrategyBuilder,omitempty"`
-	Similarities    *OfflineRecommendationsType `json:"Similarities"`             
+type StrategyDynamicStrategies struct {
+	Parametrized    *ParametrizedStrategy `json:"Parametrized,omitempty"`   
+	Generic         *GenericStrategy      `json:"Generic,omitempty"`        
+	StrategyBuilder *string               `json:"StrategyBuilder,omitempty"`
 }
 
 type PurchaseComplete struct {
@@ -952,15 +952,15 @@ type ItemDetailsRecoShow struct {
 	StrategySelected *Strategy                 `json:"strategy_selected"`
 }
 
+// Parametrized strategies
+//
 // Pre-defined strategies
 //
 // Build your custom strategies
-//
-// Similar description, image or other defined by you
-type StrategiesUsedGenericStrategies struct {
-	Generic         *GenericStrategy            `json:"Generic,omitempty"`        
-	StrategyBuilder *string                     `json:"StrategyBuilder,omitempty"`
-	Similarities    *OfflineRecommendationsType `json:"Similarities"`             
+type StrategiesUsedDynamicStrategies struct {
+	Parametrized    *ParametrizedStrategy `json:"Parametrized,omitempty"`   
+	Generic         *GenericStrategy      `json:"Generic,omitempty"`        
+	StrategyBuilder *string               `json:"StrategyBuilder,omitempty"`
 }
 
 type PlacementConfig struct {
@@ -1321,20 +1321,20 @@ const (
 	Zwl Currency = "ZWL"
 )
 
-type StockStateEnum string
-const (
-	BackOrder StockStateEnum = "BackOrder"
-	InStock StockStateEnum = "InStock"
-	OutOfStock StockStateEnum = "OutOfStock"
-	PreOrder StockStateEnum = "PreOrder"
-)
-
 type ItemType string
 const (
 	Ecommerce ItemType = "Ecommerce"
 	ItemTypeArticle ItemType = "Article"
 	ItemTypeUnknown ItemType = "Unknown"
 	ItemTypeVideo ItemType = "Video"
+)
+
+type StockStateEnum string
+const (
+	BackOrder StockStateEnum = "BackOrder"
+	InStock StockStateEnum = "InStock"
+	OutOfStock StockStateEnum = "OutOfStock"
+	PreOrder StockStateEnum = "PreOrder"
 )
 
 type Gender string
@@ -1469,18 +1469,17 @@ const (
 
 type GenericStrategy string
 const (
-	AlsoAddedToCart GenericStrategy = "AlsoAddedToCart"
-	AlsoPurchased GenericStrategy = "AlsoPurchased"
-	AlsoSeen GenericStrategy = "AlsoSeen"
 	BestsellerCategory GenericStrategy = "BestsellerCategory"
-	BestsellerGlobal GenericStrategy = "BestsellerGlobal"
-	ContentMatching GenericStrategy = "ContentMatching"
-	MostPurchases GenericStrategy = "MostPurchases"
-	MostViews GenericStrategy = "MostViews"
 	SearchMatching GenericStrategy = "SearchMatching"
-	SeenInSession GenericStrategy = "SeenInSession"
 	SeenInSessionCoccurAddedToCart GenericStrategy = "SeenInSessionCoccurAddedToCart"
 	SeenInSessionCoccurSeen GenericStrategy = "SeenInSessionCoccurSeen"
+)
+
+type UserInfoType string
+const (
+	Session UserInfoType = "SESSION"
+	User UserInfoType = "USER"
+	Visitor UserInfoType = "VISITOR"
 )
 
 type StrategyEnum string
@@ -1755,49 +1754,49 @@ func (x *PlacementsStatisticElement) MarshalJSON() ([]byte, error) {
 
 type Strategy struct {
 	Enum                      *StrategyEnum
-	StrategyGenericStrategies *StrategyGenericStrategies
+	StrategyDynamicStrategies *StrategyDynamicStrategies
 }
 
 func (x *Strategy) UnmarshalJSON(data []byte) error {
-	x.StrategyGenericStrategies = nil
+	x.StrategyDynamicStrategies = nil
 	x.Enum = nil
-	var c StrategyGenericStrategies
+	var c StrategyDynamicStrategies
 	object, err := unmarshalUnion(data, nil, nil, nil, nil, false, nil, true, &c, false, nil, true, &x.Enum, false)
 	if err != nil {
 		return err
 	}
 	if object {
-		x.StrategyGenericStrategies = &c
+		x.StrategyDynamicStrategies = &c
 	}
 	return nil
 }
 
 func (x *Strategy) MarshalJSON() ([]byte, error) {
-	return marshalUnion(nil, nil, nil, nil, false, nil, x.StrategyGenericStrategies != nil, x.StrategyGenericStrategies, false, nil, x.Enum != nil, x.Enum, false)
+	return marshalUnion(nil, nil, nil, nil, false, nil, x.StrategyDynamicStrategies != nil, x.StrategyDynamicStrategies, false, nil, x.Enum != nil, x.Enum, false)
 }
 
 type StrategiesUsedElement struct {
 	Double                          *float64
 	Enum                            *StrategyEnum
-	StrategiesUsedGenericStrategies *StrategiesUsedGenericStrategies
+	StrategiesUsedDynamicStrategies *StrategiesUsedDynamicStrategies
 }
 
 func (x *StrategiesUsedElement) UnmarshalJSON(data []byte) error {
-	x.StrategiesUsedGenericStrategies = nil
+	x.StrategiesUsedDynamicStrategies = nil
 	x.Enum = nil
-	var c StrategiesUsedGenericStrategies
+	var c StrategiesUsedDynamicStrategies
 	object, err := unmarshalUnion(data, nil, &x.Double, nil, nil, false, nil, true, &c, false, nil, true, &x.Enum, false)
 	if err != nil {
 		return err
 	}
 	if object {
-		x.StrategiesUsedGenericStrategies = &c
+		x.StrategiesUsedDynamicStrategies = &c
 	}
 	return nil
 }
 
 func (x *StrategiesUsedElement) MarshalJSON() ([]byte, error) {
-	return marshalUnion(nil, x.Double, nil, nil, false, nil, x.StrategiesUsedGenericStrategies != nil, x.StrategiesUsedGenericStrategies, false, nil, x.Enum != nil, x.Enum, false)
+	return marshalUnion(nil, x.Double, nil, nil, false, nil, x.StrategiesUsedDynamicStrategies != nil, x.StrategiesUsedDynamicStrategies, false, nil, x.Enum != nil, x.Enum, false)
 }
 
 type ItemAttributesSelectionUnion struct {
